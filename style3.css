@@ -1,9 +1,10 @@
 body {
+    margin: 100px;
     font-family: Arial, sans-serif;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #342f2f;
 }
 
 .container {
@@ -22,7 +23,7 @@ body {
 .cell {
     width: 100px;
     height: 100px;
-    background-color: #dc2f2f;
+    background-color: #b14949;
     border: 2px solid #ccc;
     display: flex;
     justify-content: center;
@@ -56,4 +57,6 @@ body {
 }
 h1{
     text-align: center;
+    color:white ;
+    padding:20px;
 }
