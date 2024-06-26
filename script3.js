@@ -9,16 +9,22 @@ const winningCombos = [
 const cells = document.querySelectorAll('.cell');
 const resetButton = document.getElementById('reset-button');
 
+let gameOver = false;
+
 cells.forEach(cell => {
     cell.addEventListener('click', () => {
         const index = parseInt(cell.id.split('-')[1]);
-        if (board[index] === '') {
+        
+        if (!gameOver && board[index] === '') {
             board[index] = currentPlayer;
-            cell.classList.add(currentPlayer === 'X' ? 'x-mark' : 'o-mark'); // Add class based on currentPlayer
+            cell.classList.add(currentPlayer === 'X' ? 'x-mark' : 'o-mark');
             cell.textContent = currentPlayer;
+
             if (checkWin(currentPlayer)) {
+                gameOver = true; // Set gameOver to true
                 alert(`Player ${currentPlayer} wins!`);
             } else if (board.every(square => square !== '')) {
+                gameOver = true; // Set gameOver to true
                 alert("It's a draw!");
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
@@ -26,6 +32,7 @@ cells.forEach(cell => {
         }
     });
 });
+
 
 resetButton.addEventListener('click', resetGame);
 
@@ -41,4 +48,5 @@ function resetGame() {
     cells.forEach(cell => {
         cell.textContent = '';
     });
+    gameOver = false;
 }
